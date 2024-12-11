@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px); /* Start slightly left */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Fade in to normal position */
+  }
+}
+
+.animate-fade-in-from-left {
+  animation: fadeInFromLeft 1s ease-out;
+}
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px); /* Start slightly below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Fade in to normal position */
+  }
+}
+
+.animate-fade-in-from-bottom {
+  animation: fadeInFromBottom 1s ease-out;
+}
+
+/* night mode button */
+
+/* HTML CSS JSResult Skip Results Iframe */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* background: #151d29; */
+  /* background: #d6e7f7; */
+  /* color: hsl(0, 0%, 98%); */
+  /* center the label in the viewport */
+  /* min-height: 100vh; */
+  /* background-image: linear-gradient(to bottom, #119191,#ç );  */
+  /* background-color: #111827;  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transition:  2.75s ease-in-out; */
+  transition: background-image 3s ease-in-out;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+}
+
+/* absolute position the input element on top of the accompanying svg element */
+label {
+  position: relative;
+}
+label input {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+label svg {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+/* include transitions for the elements modified as the input is checked */
+label input + svg .light {
+  transition: opacity 0.75s cubic-bezier(0.68, 0.25, 0.265, 1);
+}
+label input + svg .translate,
+label input + svg .rotate,
+label input + svg .background,
+label input + svg .astronaut,
+label input + svg .surfer {
+  transition: transform 0.75s cubic-bezier(0.68, 0.25, 0.265, 1);
+}
+/* make the .light element fully transparent to have the .dark variant see through */
+label input:checked + svg .light {
+  opacity: 0;
+}
+/* translate the sun/moon toward the right (by default it is pushed back with a negative translation) */
+label input:checked + svg .translate {
+  transform: translateX(0px);
+}
+/* rotate the moon (by default it is rotated counter-clockwise) */
+label input:checked + svg .rotate {
+  transform: rotate(0deg);
+}
+/* translate the scale the backgrounds to 0
+this is rather neat, so meant an extra comment
+- the light background is positioned with two groups, one pushing it below the graphic, one back up; by removing the translation of this last group the background "returns" below the toggle
+- the dark background is positioned above and with a smaller vertical scale; by removing the translation it is placed in full view and by increasing its scale it's as if the stars would tumble down with different rates
+*/
+label input:checked + svg .background {
+  transform: translate(0px) scale(1);
+}
+
+.btn-shine {
+  /* position: absolute; */
+  /* padding: 12px 48px; */
+  color: #ffffff;
+  background: linear-gradient(to right, #0c6060 0, white 10%, #063232 20%);
+  /* background-position: 0; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  /* font-weight: 600; */
+  /* font-size: 16px; */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  /* 80% {
+    background-position: 280px;
+  } */
+  100% {
+    background-position: 280px;
+  }
+}
